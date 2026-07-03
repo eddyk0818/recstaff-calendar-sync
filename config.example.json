@@ -1,0 +1,7 @@
+{
+  "timezone": "America/Vancouver",
+  "output_file": "work_schedule.ics",
+  "server_port": 8000,
+  "schedule_url_file": "schedule_url.txt",
+  "state_file": "state.json"
+}
