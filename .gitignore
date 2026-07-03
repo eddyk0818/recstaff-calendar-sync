@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+
+state.json
+schedule_url.txt
+work_schedule.ics
+
+*.log
+sync.out.log
+sync.err.log
+server.out.log
+server.err.log
+
+.DS_Store
