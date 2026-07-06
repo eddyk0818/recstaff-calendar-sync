@@ -1,57 +1,33 @@
 # RecStaff Calendar Sync
 
-A Python automation tool that converts a RecStaff work schedule into an Apple Calendar-compatible `.ics` calendar feed.
+A small Python tool I made to sync my RecStaff work schedule into Apple Calendar.
 
-## Why I built this
-
-My work scheduling platform did not provide a native Apple Calendar export or iCal subscription link. I wanted my shifts to appear automatically in Apple Calendar, so I built a custom sync tool.
+I work as a lifeguard/swim instructor, and I got tired of checking RecStaff manually or copying shifts into my calendar. RecStaff did not give me a calendar subscription link, so I made my own `.ics` feed.
 
 ## What it does
 
-- Opens the RecStaff schedule page using a saved authenticated browser session
-- Extracts visible shift information from the rendered schedule calendar
-- Parses shift dates, start times, end times, and role codes
-- Generates an Apple Calendar-compatible `.ics` file
-- Serves the `.ics` file locally so Apple Calendar can subscribe to it
-- Can be automated with macOS LaunchAgents for periodic refreshes
+- Opens my RecStaff schedule using a saved browser session
+- Scrapes visible shift times from the schedule page
+- Converts shifts into `.ics` calendar events
+- Lets Apple Calendar subscribe to the generated calendar file
+- Avoids committing private login/session files
 
 ## Tech used
 
 - Python
 - Playwright
-- iCalendar / `.ics` format
+- iCalendar / `.ics`
 - macOS LaunchAgents
 - Local HTTP server
 
-## How it works
+## What I learned
 
-RecStaff schedule page
-→ Python + Playwright scraper
-→ Parsed shift events
-→ Generated `.ics` calendar file
-→ Local HTTP server
-→ Apple Calendar subscription
+- Browser automation with Playwright
+- Working with authenticated sessions
+- Parsing dates and times from messy webpage text
+- Generating calendar events
+- Handling time zones and duplicate events
 
-## Setup
+## Current status
 
-Create a virtual environment:
-
-    python3 -m venv .venv
-    source .venv/bin/activate
-
-Install dependencies:
-
-    pip install -r requirements.txt
-    python3 -m playwright install chromium
-
-Run the sync script:
-
-    python3 recstaff_sync.py
-
-On the first run, the script opens a browser window. Log in to RecStaff, navigate to the schedule page, then return to Terminal and press Enter. The script saves the browser session locally so future runs can reuse it.
-
-## Privacy note
-
-This project is designed for personal schedule automation. It uses the user's own authenticated session and does not bypass login or access control.
-
-Private files such as `state.json`, `schedule_url.txt`, logs, and generated `.ics` files should not be committed to GitHub.
+This is mainly built for my own RecStaff setup. It may need changes to work for other accounts, workplaces, or schedule page layouts.
